@@ -459,6 +459,12 @@ vim.o.hlsearch = false
 
 -- Make line numbers default
 vim.wo.number = true
+vim.opt.relativenumber = true
+
+vim.opt.wrap = false
+
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -491,6 +497,9 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
+vim.opt.virtualedit = "block"
+
+vim.opt.inccommand = "split"
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
