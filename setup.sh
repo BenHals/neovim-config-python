@@ -7,7 +7,7 @@ sudo apt-get install build-essential
 sudo apt install libssl-dev libffi-dev libncurses5-dev zlib1g zlib1g-dev libreadline-dev libbz2-dev libsqlite3-dev make gcc liblzma-dev lzma
 sudo apt-get install nodejs npm
 sudo apt-get install neovim
-
+sudo apt-get install python-tk python3-tk tk-dev
 sudo apt-get install fd-find
 
 username_home=$HOME
