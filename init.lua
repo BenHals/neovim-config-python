@@ -435,6 +435,15 @@ require('lazy').setup({
       },
     },
   },
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+  },
+  {
+    "mbbill/undotree"
+  },
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -726,6 +735,9 @@ require('which-key').register {
   ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
 }
 
+require('gitsigns').setup {
+
+}
 -- mason-lspconfig requires that these setup functions are called in this order
 -- before setting up the servers.
 require('mason').setup()
@@ -832,6 +844,8 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
 require("catppuccin").setup({
   flavor = "mocha"
