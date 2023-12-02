@@ -764,6 +764,7 @@ local servers = {
   -- clangd = {},
   -- gopls = {},
   pyright = {},
+  ruff_lsp = {},
   -- rust_analyzer = {},
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
