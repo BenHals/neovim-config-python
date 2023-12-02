@@ -275,6 +275,12 @@ require('lazy').setup({
       },
     },
   },
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "VeryLazy",
+    opts = {},
+    config = function(_, opts) require 'lsp_signature'.setup(opts) end
+  },
   -- DEBUGGING
 
   -- DAP Client for nvim
@@ -722,6 +728,9 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
+
+  local lsp_signature_config = {}
+  require('lsp_signature').on_attach(lsp_signature_config, bufnr)
 end
 
 -- document existing key chains
