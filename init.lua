@@ -435,7 +435,7 @@ require('lazy').setup({
     opts = true,
     keys = {
       {
-        "<leader>a",
+        "<leader>cd",
         function() require("neogen").generate() end,
         desc = "Add Docstring",
       },
