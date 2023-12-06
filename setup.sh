@@ -15,6 +15,9 @@ username_home=$HOME
 if [ ! -d "$username_home/.asdf" ]; then
   git clone https://github.com/asdf-vm/asdf.git $username_home/.asdf --branch v0.13.1
 fi
+if [ ! -d "$username_home/.tmux/plugins/tmp" ]; then
+  git clone https://github.com/tmux-plugins/tpm $username_home/.tmux/plugins/tpm
+fi
 
 sudo chmod u+x $username_home/.asdf/asdf.sh
 
@@ -22,6 +25,7 @@ sudo cp $username_home/.config/nvim/.bashrc $username_home/.bashrc
 sudo cp $username_home/.config/nvim/.tmux.conf $username_home/.tmux.conf
 
 source $username_home/.bashrc
+tmux source $username_home/.tmux.conf
 
 asdf plugin-add python
 
