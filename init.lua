@@ -104,6 +104,9 @@ require('lazy').setup({
       'folke/neodev.nvim',
     },
   },
+  {
+    'jose-elias-alvarez/null-ls.nvim'
+  },
 
   {
     -- Autocompletion
@@ -238,6 +241,7 @@ require('lazy').setup({
         "ruff-lsp", -- linter for python (includes flake8, pep8, etc.)
         "debugpy",  -- debugger
         "black",    -- formatter
+        "mypy",
         "isort",    -- organize imports
         "taplo",    -- LSP for toml (for pyproject.toml files)
       },
@@ -821,6 +825,21 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
+local null_ls = require("null-ls")
+
+null_ls.setup({
+  on_attach = on_attach,
+  sources = {
+    null_ls.builtins.diagnostics.mypy.with({
+      extra_args = function()
+        local virtual = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX") or "/usr"
+        return { "--python-executable", virtual .. "/bin/python3" }
+      end,
+    }),
+  },
+  capabilities = capabilities
+})
+
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
 local cmp = require 'cmp'
@@ -894,4 +913,7 @@ vim.g.clipboard = {
 local dap, dapui = require("dap"), require("dapui")
 dapui.setup()
 -- The line beneath this is called `modeline`. See `:help modeline`
+
+vim.diagnostic.config({ float = { source = 'always', border = border }, })
+
 -- vim: ts=2 sts=2 sw=2 et
