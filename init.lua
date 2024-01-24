@@ -85,7 +85,12 @@ require('lazy').setup({
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
-
+  'dstein64/nvim-scrollview',
+  {
+    'folke/trouble.nvim',
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {},
+  },
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
@@ -552,7 +557,8 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+-- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+vim.keymap.set('n', '<leader>q', ':Trouble<CR>', { desc = 'Open diagnostic list' })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -898,18 +904,18 @@ require("catppuccin").setup({
 })
 vim.cmd.colorscheme "catppuccin-mocha"
 
-vim.g.clipboard = {
-  name = 'WslClipboard',
-  copy = {
-    ["+"] = { 'clip.exe' },
-    ["*"] = { 'clip.exe' },
-  },
-  paste = {
-    ["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-    ["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-  },
-  cache_enabled = true,
-}
+-- vim.g.clipboard = {
+--   name = 'WslClipboard',
+--   copy = {
+--     ["+"] = { 'clip.exe' },
+--     ["*"] = { 'clip.exe' },
+--   },
+--   paste = {
+--     ["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+--     ["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+--   },
+--   cache_enabled = true,
+-- }
 local dap, dapui = require("dap"), require("dapui")
 dapui.setup()
 -- The line beneath this is called `modeline`. See `:help modeline`
