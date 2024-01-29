@@ -245,7 +245,7 @@ require('lazy').setup({
       ensure_installed = {
         "ruff-lsp", -- linter for python (includes flake8, pep8, etc.)
         "debugpy",  -- debugger
-        "black",    -- formatter
+        "ruff",     -- formatter
         "mypy",
         "isort",    -- organize imports
         "taplo",    -- LSP for toml (for pyproject.toml files)
@@ -269,7 +269,7 @@ require('lazy').setup({
     opts = {
       formatters_by_ft = {
         -- first use isort and then black
-        python = { "isort", "black" },
+        python = { "isort", "ruff" },
         -- "inject" is a special formatter from conform.nvim, which
         -- formats treesitter-injected code. Basically, this makes
         -- conform.nvim format python codeblocks inside a markdown file.
@@ -839,7 +839,8 @@ null_ls.setup({
     null_ls.builtins.diagnostics.mypy.with({
       extra_args = function()
         local virtual = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX") or "/usr"
-        return { "--python-executable", virtual .. "/bin/python3" }
+        print(virtual)
+        return { "--python-executable", virtual .. "/bin/python" }
       end,
     }),
   },
