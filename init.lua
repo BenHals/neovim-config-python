@@ -249,6 +249,7 @@ require('lazy').setup({
         "mypy",
         "isort",    -- organize imports
         "taplo",    -- LSP for toml (for pyproject.toml files)
+        "julials",
       },
     },
   },
@@ -466,14 +467,21 @@ require('lazy').setup({
       nvim_tmux_nav.setup({
         disable_when_zoomed = true,
         -- defaults to false
-        keybindings = {
-          left = "<C-h>",
-          down = "<C-j>",
-          up = "<C-k>",
-          right = "<C-l>",
-          last_active = "<C-\\>",
-        },
+        -- keybindings = {
+        --   left = "<C-h>",
+        --   down = "<C-j>",
+        --   up = "<C-k>",
+        --   right = "<C-l>",
+        --   last_active = "<C-\\>",
+        -- },
       })
+      vim.keymap.set('n', "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
+      vim.keymap.set('n', "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
+      vim.keymap.set('n', "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
+      vim.keymap.set('n', "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
+      vim.keymap.set('n', "<C-L>", nvim_tmux_nav.NvimTmuxNavigateRight)
+      vim.keymap.set('n', "<C-\\>", nvim_tmux_nav.NvimTmuxNavigateLastActive)
+      vim.keymap.set('n', "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
     end,
   }
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
@@ -548,6 +556,7 @@ vim.opt.inccommand = "split"
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'i', 'v' }, 'jk', '<Esc>', { noremap = true })
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+vim.keymap.set({ 'n' }, '<C-o>', '<Plug>NetrwRefresh', { unique = true })
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -741,7 +750,7 @@ local on_attach = function(_, bufnr)
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+  nmap('<C-s>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
@@ -792,6 +801,7 @@ local servers = {
   -- gopls = {},
   pyright = {},
   ruff_lsp = {},
+  julials = {},
   -- rust_analyzer = {},
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
