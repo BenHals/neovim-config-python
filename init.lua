@@ -82,10 +82,11 @@ require('lazy').setup({
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
+  'lewis6991/satellite.nvim',
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
-  'dstein64/nvim-scrollview',
+  -- 'dstein64/nvim-scrollview',
   {
     'folke/trouble.nvim',
     dependencies = { "nvim-tree/nvim-web-devicons" },
