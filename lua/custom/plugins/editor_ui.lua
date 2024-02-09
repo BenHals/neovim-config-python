@@ -64,4 +64,13 @@ return {
             vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
         end
     },
+    {
+        'wellle/targets.vim'
+    },
+    {
+        'ggandor/leap.nvim',
+        config = function()
+            require('leap').create_default_mappings()
+        end
+    },
 }
