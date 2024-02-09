@@ -16,6 +16,9 @@ return {
         name = 'rose-pine',
         priority = 1000,
         opts = {
+            highlight_groups = {
+                Cursor = { fg = '#ffffff', bg = '#ffffff' }
+            },
             variant = "auto"
         },
         config = function()
