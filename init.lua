@@ -176,6 +176,11 @@ require('lazy').setup({
     name = 'catppuccin',
     priority = 1000,
   },
+  {
+    'rose-pine/neovim',
+    name = 'rose-pine',
+    priority = 1000
+  },
 
   {
     -- Set lualine as statusline
@@ -184,7 +189,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'onedark',
+        theme = 'auto',
         component_separators = '|',
         section_separators = '',
       },
@@ -911,11 +916,15 @@ cmp.setup {
 
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
-require("catppuccin").setup({
-  flavor = "mocha"
+-- require("catppuccin").setup({
+--   flavor = "macchiato"
+-- })
+-- vim.cmd.colorscheme "catppuccin-macchiato"
+require("rose-pine").setup({
+  variant = "auto"
 })
-vim.cmd.colorscheme "catppuccin-mocha"
 
+vim.cmd.colorscheme "rose-pine"
 -- vim.g.clipboard = {
 --   name = 'WslClipboard',
 --   copy = {
