@@ -4,11 +4,13 @@ return {
         lazy = false,
         name = 'catppuccin',
         priority = 1000,
-        opts = {
-            flavor = "macchiato"
-        },
         config = function()
-            vim.cmd.colorscheme "catppuccin-macchiato"
+            require("catppuccin").setup({
+                flavour = "macchiato",
+                transparent_background = true,
+            })
+
+            vim.cmd.colorscheme "catppuccin"
         end
     },
     {
@@ -19,10 +21,10 @@ return {
             highlight_groups = {
                 Cursor = { fg = '#ffffff', bg = '#ffffff' }
             },
-            variant = "auto"
+            variant = "auto",
+            styles = {
+                transparency = true
+            }
         },
-        config = function()
-            -- vim.cmd.colorscheme "rose-pine"
-        end
     },
 }
