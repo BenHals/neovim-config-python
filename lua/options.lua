@@ -21,6 +21,9 @@ vim.api.nvim_create_autocmd("FileType", {
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
+vim.opt_local.shiftwidth = 4
+vim.opt_local.tabstop = 4
+vim.opt_local.softtabstop = 4
 
 -- Set highlight on search
 vim.o.hlsearch = false
