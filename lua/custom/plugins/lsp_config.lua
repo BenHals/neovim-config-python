@@ -84,6 +84,7 @@ return {
                 pyright = {},
                 ruff_lsp = {},
                 julials = {},
+                -- terraformls = { filetypes = { 'tf', 'tfvars' } },
                 -- rust_analyzer = {},
                 -- tsserver = {},
                 -- html = { filetypes = { 'html', 'twig', 'hbs'} },
@@ -109,6 +110,8 @@ return {
                 ensure_installed = vim.tbl_keys(servers),
             }
 
+
+
             mason_lspconfig.setup_handlers {
                 function(server_name)
                     require('lspconfig')[server_name].setup {
@@ -119,6 +122,11 @@ return {
                     }
                 end,
             }
+
+            require("lspconfig")["terraformls"].setup({
+                capabilities = capabilities,
+                filetypes = { "tf", "tfvars" }
+            })
 
             local null_ls = require("null-ls")
 
@@ -228,6 +236,7 @@ return {
                 "isort",    -- organize imports
                 "taplo",    -- LSP for toml (for pyproject.toml files)
                 "julials",
+                "terraform-ls",
             },
         },
     },
