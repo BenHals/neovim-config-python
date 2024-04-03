@@ -68,6 +68,7 @@ return {
                     },
                 },
             }
+            vim.treesitter.language.register('hcl', 'tf')
         end
     },
 }

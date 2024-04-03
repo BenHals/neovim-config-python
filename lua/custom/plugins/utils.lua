@@ -35,6 +35,31 @@ return {
         build = function() vim.fn["mkdp#util#install"]() end,
     },
     {
+        "lukas-reineke/headlines.nvim",
+        config = function()
+            require('headlines').setup {
+                markdown = {
+                    fat_headline_lower_string = "▀",
+
+                    headline_highlights = {
+                        "Headline1",
+                        "Headline2",
+                        "Headline3",
+                        "Headline4",
+                        "Headline5",
+                        "Headline6"
+                    }
+                }
+            }
+
+            -- vim.cmd([[highlight Headline1 guibg=#ff1111 guifg=white]])
+            -- vim.cmd([[highlight Headline2 guibg=#21262d]])
+            -- vim.cmd([[highlight CodeBlock guibg=#1c1c1c]])
+            -- vim.cmd([[highlight Dash guifg=#D19A66 gui=bold]])
+        end,
+        dependencies = "nvim-treesitter/nvim-treesitter"
+    },
+    {
         "alexghergh/nvim-tmux-navigation",
         config = function()
             local nvim_tmux_nav = require("nvim-tmux-navigation")
