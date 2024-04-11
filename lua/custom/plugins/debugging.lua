@@ -156,12 +156,12 @@ return {
 
             require("dap-python").setup(debugpyPythonPath, {})
 
-            local dap = require('dap')
-            dap.adapters.python = {
-                type = 'executable',
-                command = 'python',
-                args = { '-m', 'debugpy.adapter' },
-            }
+            -- local dap = require('dap')
+            -- dap.adapters.python = {
+            --     type = 'executable',
+            --     command = 'python',
+            --     args = { '-m', 'debugpy.adapter' },
+            -- }
         end,
     },
     {
