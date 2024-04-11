@@ -38,6 +38,26 @@ return {
                 function() require("dap").terminate() end,
                 desc = "Terminate Debugger",
             },
+            {
+                "<leader>dl",
+                function() require('neotest').summary.toggle() end,
+                desc = "Toggle summary list",
+            },
+            {
+                "<leader>dt",
+                function() require('neotest').run.run() end,
+                desc = "Run test",
+            },
+            {
+                "<leader>dT",
+                function() require('neotest').run.run(vim.fn.expand("%")) end,
+                desc = "Run Tests in File",
+            },
+            {
+                "<leader>dm",
+                function() require('neotest').run.run({ strategy = "dap" }) end,
+                desc = "Debug test",
+            },
         },
         config = function()
             local dap, dapui = require("dap"), require("dapui")
@@ -133,7 +153,34 @@ return {
             -- uses the debugypy installation by mason
             local debugpyPythonPath = require("mason-registry").get_package("debugpy"):get_install_path()
                 .. "/venv/bin/python3"
+
             require("dap-python").setup(debugpyPythonPath, {})
+
+            local dap = require('dap')
+            dap.adapters.python = {
+                type = 'executable',
+                command = 'python',
+                args = { '-m', 'debugpy.adapter' },
+            }
+        end,
+    },
+    {
+        "nvim-neotest/neotest",
+        dependencies = {
+            "nvim-neotest/nvim-nio",
+            "nvim-lua/plenary.nvim",
+            "antoinemadec/FixCursorHold.nvim",
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-neotest/neotest-python",
+        },
+        config = function()
+            require("neotest").setup({
+                adapters = {
+                    require("neotest-python")({
+                        dap = { stopOnEntry = false, justMyCode = false }
+                    })
+                }
+            })
         end,
     },
 }
