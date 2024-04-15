@@ -166,6 +166,7 @@ return {
             -- See `:help cmp`
             local cmp = require 'cmp'
             local luasnip = require 'luasnip'
+            local compare = cmp.config.compare
             require('luasnip.loaders.from_vscode').lazy_load()
             luasnip.config.setup {}
 
@@ -211,6 +212,22 @@ return {
                     { name = 'nvim_lsp' },
                     { name = 'luasnip' },
                 },
+                sorting = {
+                    priority_weight = 2,
+                    comparators = {
+                        -- compare.kind,
+                        compare.locality,
+                        compare.recently_used,
+                        compare.score,
+                        compare.offset,
+                        compare.order,
+                        compare.exact,
+                        -- compare.scopes,
+                        -- compare.sort_text,
+                        compare.length,
+                    },
+                },
+
             }
         end
     },

@@ -7,6 +7,7 @@
   "cmp_luasnip": { "branch": "master", "commit": "05a9ab28b53f71d1aece421ef32fee2cb857a843" },
   "conform.nvim": { "branch": "master", "commit": "fd32ed2dc192ec656a0536699336cd2fe3eb543f" },
   "diffview.nvim": { "branch": "main", "commit": "3dc498c9777fe79156f3d32dddd483b8b3dbd95f" },
+  "eldritch.nvim": { "branch": "master", "commit": "754e9dd1ea529ce72efa754584c35daaa87e65fa" },
   "fidget.nvim": { "branch": "main", "commit": "a1493d94ecb3464ab3ae4d5855765310566dace4" },
   "friendly-snippets": { "branch": "main", "commit": "43727c2ff84240e55d4069ec3e6158d74cb534b6" },
   "gitsigns.nvim": { "branch": "main", "commit": "5fc573f2d2a49aec74dd6dc977e8b137429d1897" },
@@ -40,7 +41,7 @@
   "nvim-web-devicons": { "branch": "master", "commit": "b427ac5f9dff494f839e81441fb3f04a58cbcfbc" },
   "plenary.nvim": { "branch": "master", "commit": "c47e1a21d235a422034012935febd2d078d77ac6" },
   "rose-pine": { "branch": "main", "commit": "ed4b138acec5af6f3fb39d41505f9a1a79a708ca" },
-  "satellite.nvim": { "branch": "main", "commit": "99610b77fe2e047d2e55d70a256bcf63953eb6d7" },
+  "satellite.nvim": { "branch": "main", "commit": "8eac62cf13cc6b8de0f98e84bd1df3972f953dbb" },
   "targets.vim": { "branch": "master", "commit": "642d3a4ce306264b05ea3219920b13ea80931767" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "6c921ca12321edaa773e324ef64ea301a1d0da62" },
   "telescope.nvim": { "branch": "0.1.x", "commit": "7011eaae0ac1afe036e30c95cf80200b8dc3f21a" },
@@ -50,5 +51,6 @@
   "vim-fugitive": { "branch": "master", "commit": "46eaf8918b347906789df296143117774e827616" },
   "vim-rhubarb": { "branch": "master", "commit": "ee69335de176d9325267b0fd2597a22901d927b1" },
   "vim-sleuth": { "branch": "master", "commit": "1cc4557420f215d02c4d2645a748a816c220e99b" },
-  "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" }
+  "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" },
+  "yankbank-nvim": { "branch": "main", "commit": "6a8fb9c8f56b87bb383f6c78d2047b27fba67a0c" }
 }
