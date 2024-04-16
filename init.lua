@@ -39,3 +39,11 @@ pcall(require('telescope').load_extension, 'fzf')
 -- The line beneath this is called `modeline`. See `:help modeline`
 
 vim.diagnostic.config({ float = { source = 'always', border = vim.g.border_chars }, })
+
+set_hc_line_numbers = function()
+  vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#51B3EC', bold = true })
+  vim.api.nvim_set_hl(0, 'LineNr', { fg = 'white', bold = true })
+  vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#FB508F', bold = true })
+end
+
+vim.api.nvim_create_user_command("SetHCLN", set_hc_line_numbers, {})
