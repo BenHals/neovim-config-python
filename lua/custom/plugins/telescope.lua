@@ -34,7 +34,7 @@ return {
                     },
                 },
             }
-
+            require('telescope').setup(opts)
             -- Telescope live_grep in git root
             -- Function to find the git root directory based on the current buffer's path
             local function find_git_root()
@@ -95,8 +95,11 @@ return {
             vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics,
                 { desc = '[S]earch [D]iagnostics' })
             vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
-
-            require("telescope").setup(opts)
+            vim.keymap.set('n', '<leader>ss', require('telescope.builtin').lsp_document_symbols,
+                { desc = '[S]earch [s]ymbols' })
+            vim.keymap.set('n', '<leader>sS', require('telescope.builtin').lsp_dynamic_workspace_symbols,
+                { desc = '[S]earch [S]ymbols in Workspace' })
+>>>>>>> 5aad76aeccfb0b857d14a6238739b03f6815f2c1
         end
     },
 }

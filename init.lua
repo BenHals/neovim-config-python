@@ -47,3 +47,15 @@ set_hc_line_numbers = function()
 end
 
 vim.api.nvim_create_user_command("SetHCLN", set_hc_line_numbers, {})
+local scrollbar_enabled = true
+function toggle_scrollbar()
+  if scrollbar_enabled then
+    vim.cmd(':SatelliteDisable')
+  else
+    vim.cmd(':SatelliteEnable')
+  end
+
+  scrollbar_enabled = not scrollbar_enabled
+end
+
+vim.keymap.set('n', '<leader>es', toggle_scrollbar)
