@@ -155,13 +155,18 @@ return {
                 .. "/venv/bin/python3"
 
             require("dap-python").setup(debugpyPythonPath, {})
-
-            -- local dap = require('dap')
-            -- dap.adapters.python = {
-            --     type = 'executable',
-            --     command = 'python',
-            --     args = { '-m', 'debugpy.adapter' },
-            -- }
+            table.insert(require('dap').configurations.python, {
+                type = 'python',
+                request = 'attach',
+                name = 'Attach remote JMC',
+                connect = function()
+                    local host = vim.fn.input('Host [127.0.0.1]: ')
+                    host = host ~= '' and host or '127.0.0.1'
+                    local port = tonumber(vim.fn.input('Port [5678]: ')) or 5678
+                    local justMyCode = true
+                    return { host = host, port = port, justMyCode = justMyCode }
+                end,
+            })
         end,
     },
     {

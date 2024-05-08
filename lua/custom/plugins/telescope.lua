@@ -26,10 +26,10 @@ return {
                         i = {
                             ['<C-u>'] = false,
                             ['<C-d>'] = false,
-                            ["<c-t>"] = trouble.open_with_trouble,
+                            ["<C-t>"] = trouble.open_with_trouble,
                         },
                         n = {
-                            ["<c-t>"] = trouble.open_with_trouble,
+                            ["<C-t>"] = trouble.open_with_trouble,
                         },
                     },
                 },
@@ -99,7 +99,6 @@ return {
                 { desc = '[S]earch [s]ymbols' })
             vim.keymap.set('n', '<leader>sS', require('telescope.builtin').lsp_dynamic_workspace_symbols,
                 { desc = '[S]earch [S]ymbols in Workspace' })
->>>>>>> 5aad76aeccfb0b857d14a6238739b03f6815f2c1
         end
     },
 }
