@@ -9,6 +9,11 @@ Describes the differences between this config and default neovim config. Also in
 - - In this browser, use g? for help
 - - = on modified files to open inline diffs
 - - dv to open vertical diff checker
+- Diffview.nvim
+- - Open with :DiffviewOpen
+- - left window shows the current staged/committed text (on an unstaged file), right shows the working tree. Can stage a single line with dp, or revert with do. Or :diffput / :diffget on visual selection.
+- - Use :DiffviewFileHistory to see commit history for a set of files, defaults to the project root based on current buffers.
+
 - Comment
 - - 'gc' to comment visual selection
 - Conform
@@ -55,6 +60,22 @@ Describes the differences between this config and default neovim config. Also in
   - <leader>wa workspace add folder
   - <leader>wr workspace remove folder
   - <leader>wl workspace list folder
+- Leap
+  - s/S to start search forward or backwards
+  - type a 2 character prefix to jump to a location
+  - will jump to first one, then show a set of labels on other possible locations
+  - type the label to jump to the correct location
+  - gs to search in other windows.
+  - (Look at spooky, looks very cool but should get used to leap first!)
+- targets
+  - Adds more text objects, and increases functionality of existing ones.
+  - For pair characters, (, {, [, etc, adds a count to handle nesting, e.g., y2i( to yank the outer parenthesis
+  - Capital I, A to not select surrounding whitespace, e.g., to maintain formatting
+  - add n, l after the a or i to work on the next or previous pairs
+  - Adds separator objects, e.g., in a list like (1, 2, 3, 4), we can vi, to select each element
+  - can use a to select a comma separated list with brackets like above
+  - can use b or q to select any (), {} or '', "" respectively.
+
 
 
 # Non-plugin Keybinds
