@@ -1,0 +1,7 @@
+stow
+neovim
+python3
+ripgrep
+fzf
+fd
+
