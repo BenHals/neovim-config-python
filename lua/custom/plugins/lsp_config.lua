@@ -79,7 +79,7 @@ return {
             local servers = {
                 -- clangd = {},
                 -- gopls = {},
-                pyright = {},
+                basedpyright = {},
                 ruff_lsp = {},
                 julials = {},
                 -- terraformls = { filetypes = { 'tf', 'tfvars' } },
@@ -149,31 +149,16 @@ return {
         -- Autocompletion
         'hrsh7th/nvim-cmp',
         dependencies = {
-            -- Snippet Engine & its associated nvim-cmp source
-            'L3MON4D3/LuaSnip',
-            'saadparwaiz1/cmp_luasnip',
-
             -- Adds LSP completion capabilities
             'hrsh7th/cmp-nvim-lsp',
-
-            -- Adds a number of user-friendly snippets
-            'rafamadriz/friendly-snippets',
         },
         config = function()
             -- [[ Configure nvim-cmp ]]
             -- See `:help cmp`
             local cmp = require 'cmp'
-            local luasnip = require 'luasnip'
             local compare = cmp.config.compare
-            require('luasnip.loaders.from_vscode').lazy_load()
-            luasnip.config.setup {}
 
             cmp.setup {
-                snippet = {
-                    expand = function(args)
-                        luasnip.lsp_expand(args.body)
-                    end,
-                },
                 completion = {
                     completeopt = 'menu,menuone,noinsert'
                 },
@@ -190,8 +175,6 @@ return {
                     ['<Tab>'] = cmp.mapping(function(fallback)
                         if cmp.visible() then
                             cmp.select_next_item()
-                        elseif luasnip.expand_or_locally_jumpable() then
-                            luasnip.expand_or_jump()
                         else
                             fallback()
                         end
@@ -199,8 +182,6 @@ return {
                     ['<S-Tab>'] = cmp.mapping(function(fallback)
                         if cmp.visible() then
                             cmp.select_prev_item()
-                        elseif luasnip.locally_jumpable(-1) then
-                            luasnip.jump(-1)
                         else
                             fallback()
                         end
@@ -276,13 +257,6 @@ return {
                 -- formats treesitter-injected code. Basically, this makes
                 -- conform.nvim format python codeblocks inside a markdown file.
                 markdown = { "inject" },
-            },
-            -- enable format-on-save
-            format_on_save = {
-                -- when no formatter is setup for a filetype, fallback to formatting
-                -- via the LSP. This is relevant e.g. for taplo (toml LSP), where the
-                -- LSP can handle the formatting for us
-                lsp_fallback = true,
             },
         },
     },
