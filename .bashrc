@@ -117,3 +117,8 @@ if ! shopt -oq posix; then
 fi
 . "$HOME/.asdf/asdf.sh"
 . "$HOME/.asdf/completions/asdf.bash"
+# CoderEnv
+# DO NOT EDIT: Added by Coder CLI installer (https://coder.canva-internal.com/install.sh)
+[ -e "/Users/benhals/.coder.sh" ] && . "/Users/benhals/.coder.sh"
+# EndCoderEnv
+. "$HOME/.cargo/env"
