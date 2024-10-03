@@ -29,3 +29,5 @@ searchuc () {
   COMMAND=$(getuc -o | fzf --height 40% --layout reverse --info inline --border --sync --preview 'grep -i -B 1 {} ~/work/useful_commands.txt | grep -v {}' --preview-window up,1,border-horizontal)
   print -z -- $COMMAND
 }
+
+alias suc='searchuc'
