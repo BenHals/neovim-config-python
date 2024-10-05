@@ -84,8 +84,8 @@ return {
                 julials = {},
                 -- terraformls = { filetypes = { 'tf', 'tfvars' } },
                 rust_analyzer = {},
-                -- tsserver = {},
-                -- html = { filetypes = { 'html', 'twig', 'hbs'} },
+                tsserver = {},
+                html = { filetypes = { 'html', 'twig', 'hbs'} },
 
                 lua_ls = {
                     Lua = {
@@ -226,6 +226,7 @@ return {
                 "ruff-lsp", -- linter for python (includes flake8, pep8, etc.)
                 "debugpy",  -- debugger
                 "ruff",     -- formatter
+                "prettier",
                 "mypy",
                 "isort",    -- organize imports
                 "taplo",    -- LSP for toml (for pyproject.toml files)
@@ -257,6 +258,8 @@ return {
                 -- formats treesitter-injected code. Basically, this makes
                 -- conform.nvim format python codeblocks inside a markdown file.
                 markdown = { "inject" },
+                javascript = { "prettierd", "prettier" },
+                typescript = { "prettierd", "prettier" },
             },
         },
     },

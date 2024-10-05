@@ -117,8 +117,17 @@ if ! shopt -oq posix; then
 fi
 . "$HOME/.asdf/asdf.sh"
 . "$HOME/.asdf/completions/asdf.bash"
+eval "$(starship init bash)"
+eval "$(fzf --bash)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 # CoderEnv
 # DO NOT EDIT: Added by Coder CLI installer (https://coder.canva-internal.com/install.sh)
 [ -e "/Users/benhals/.coder.sh" ] && . "/Users/benhals/.coder.sh"
 # EndCoderEnv
 . "$HOME/.cargo/env"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
