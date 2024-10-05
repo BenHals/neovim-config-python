@@ -84,7 +84,7 @@ return {
                 julials = {},
                 -- terraformls = { filetypes = { 'tf', 'tfvars' } },
                 rust_analyzer = {},
-                tsserver = {},
+                ts_ls = {},
                 html = { filetypes = { 'html', 'twig', 'hbs'} },
 
                 lua_ls = {
