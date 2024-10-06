@@ -131,3 +131,4 @@ export NVM_DIR="$HOME/.nvm"
 . "$HOME/.cargo/env"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+PATH=~/nvim-linux64/bin:$PATH
