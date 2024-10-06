@@ -5,6 +5,18 @@ return {
     'folke/trouble.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = {},
+    keys = {
+      {
+        '<leader>q',
+        '<cmd>Trouble diagnostics toggle<cr>',
+        desc = 'Diagnostics (trouble)',
+      },
+      {
+        '<leader>Q',
+        '<cmd>Trouble qflist toggle<cr>',
+        desc = 'Diagnostics (trouble)',
+      },
+    },
   },
   -- For example, in the following configuration, we use:
   --  event = 'VimEnter'
@@ -59,7 +71,8 @@ return {
       -- Document existing key chains
       spec = {
         { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
-        { '<leader>d', group = '[D]ocument' },
+        { '<leader>d', group = '[D]ebug' },
+        { '<leader>f', group = '[F]ile' },
         { '<leader>r', group = '[R]ename' },
         { '<leader>s', group = '[S]earch' },
         { '<leader>w', group = '[W]orkspace' },

@@ -1,22 +1,8 @@
 return {
   {
     'mfussenegger/nvim-dap',
-    dependencies = {
-      -- Creates a beautiful debugger UI
-      'rcarriga/nvim-dap-ui',
-
-      -- Required dependency for nvim-dap-ui
-      'nvim-neotest/nvim-nio',
-
-      -- Installs the debug adapters for you
-      'williamboman/mason.nvim',
-
-      -- Add your own debuggers here
-      'mfussenegger/nvim-dap-python',
-    },
     keys = function(_, keys)
       local dap = require 'dap'
-      local dapui = require 'dapui'
       return {
         -- Basic debugging keymaps, feel free to change to your liking!
         { '<leader>dc', dap.continue, desc = 'Debug: Start/Continue' },
@@ -31,8 +17,6 @@ return {
           end,
           desc = 'Debug: Set Breakpoint',
         },
-        -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
-        { '<leader>ds', dapui.toggle, desc = 'Debug: See last session result.' },
         unpack(keys),
       }
     end,
@@ -43,6 +27,7 @@ return {
       dap.listeners.after.event_initialized['dapui_config'] = dapui.open
       dap.listeners.before.event_terminated['dapui_config'] = dapui.close
       dap.listeners.before.event_exited['dapui_config'] = dapui.close
+      dapui.setup()
     end,
   },
   {
