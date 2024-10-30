@@ -1,69 +1,53 @@
 local ui = {
-  -- UI for the debugger
-  -- - the debugger UI is also automatically opened when starting/stopping the debugger
-  -- - toggle debugger UI manually with `<leader>du`
-  {
-    'rcarriga/nvim-dap-ui',
-    keys = {
+  'rcarriga/nvim-dap-ui',
+  keys = {
+    {
+      '<leader>du',
+      function()
+        require('dapui').toggle()
+      end,
+      silent = true,
+    },
+  },
+  opts = {
+    mappings = {
+      expand = { '<CR>', '<2-LeftMouse>' },
+      open = 'o',
+      remove = 'd',
+      edit = 'e',
+      repl = 'r',
+      toggle = 't',
+    },
+    layouts = {
       {
-        '<leader>du',
-        function()
-          require('dapui').toggle()
-        end,
-        silent = true,
+        elements = {
+          { id = 'repl', size = 0.30 },
+          { id = 'console', size = 0.70 },
+        },
+        size = 0.19,
+        position = 'bottom',
+      },
+      {
+        elements = {
+          { id = 'scopes', size = 0.30 },
+          { id = 'breakpoints', size = 0.20 },
+          { id = 'stacks', size = 0.10 },
+          { id = 'watches', size = 0.30 },
+        },
+        size = 0.20,
+        position = 'right',
       },
     },
-    opts = {
-      icons = { expanded = '∩â¥', collapsed = '∩âÜ', circular = '∩äÉ' },
+    controls = {
+      enabled = true,
+      element = 'repl',
+    },
+    floating = {
+      max_height = 0.9,
+      max_width = 0.5,
+      border = vim.g.border_chars,
       mappings = {
-        expand = { '<CR>', '<2-LeftMouse>' },
-        open = 'o',
-        remove = 'd',
-        edit = 'e',
-        repl = 'r',
-        toggle = 't',
-      },
-      layouts = {
-        {
-          elements = {
-            { id = 'repl', size = 0.30 },
-            { id = 'console', size = 0.70 },
-          },
-          size = 0.19,
-          position = 'bottom',
-        },
-        {
-          elements = {
-            { id = 'scopes', size = 0.30 },
-            { id = 'breakpoints', size = 0.20 },
-            { id = 'stacks', size = 0.10 },
-            { id = 'watches', size = 0.30 },
-          },
-          size = 0.20,
-          position = 'right',
-        },
-      },
-      controls = {
-        enabled = true,
-        element = 'repl',
-        icons = {
-          pause = 'ε½æ',
-          play = 'ε½ô',
-          step_into = 'ε½ö',
-          step_over = 'ε½û ',
-          step_out = 'ε½ò',
-          step_back = 'ε«Å ',
-          run_last = 'ε¼╖ ',
-          terminate = 'ε½ù ',
-        },
-      },
-      floating = {
-        max_height = 0.9,
-        max_width = 0.5,
-        border = vim.g.border_chars,
-        mappings = {
-          close = { 'q', '<Esc>' },
-        },
+        close = { 'q', '<Esc>' },
       },
     },
   },
