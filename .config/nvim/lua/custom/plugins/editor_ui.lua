@@ -14,7 +14,7 @@ return {
       {
         '<leader>Q',
         '<cmd>Trouble qflist toggle<cr>',
-        desc = 'Diagnostics (trouble)',
+        desc = 'qfix list (trouble)',
       },
     },
   },
@@ -98,24 +98,26 @@ return {
   },
   {
     'mbbill/undotree',
-    config = function()
-      vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
-    end,
+    keys = {
+      { '<leader>u', vim.cmd.UndotreeToggle, 'n', desc = 'UndoTree Toggle' },
+    },
   },
   {
     'wellle/targets.vim',
   },
   {
     'ggandor/leap.nvim',
-    config = function()
-      require('leap').create_default_mappings()
-    end,
+    keys = {
+      { 's', '<Plug>(leap-forward)', { 'n', 'x', 'o' }, desc = 'Leap (forward)' },
+      { 'S', '<Plug>(leap-backward)', { 'n', 'x', 'o' }, desc = 'Leap (backward)' },
+    },
+    opts = {},
   },
   {
     'ptdewey/yankbank-nvim',
-    config = function()
-      require('yankbank').setup()
-      vim.keymap.set('n', '<leader>p', '<cmd>YankBank<CR>', { noremap = true })
-    end,
+    keys = {
+      { '<leader>p', vim.cmd.YankBank, 'n', desc = 'Yank List', noremap = true },
+    },
+    opts = {},
   },
 }

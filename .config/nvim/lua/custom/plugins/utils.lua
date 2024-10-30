@@ -4,13 +4,15 @@ return {
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
-    config = {},
+    ft = { 'markdown', 'norg', 'rmd', 'org' },
+    opts = {},
   },
   {
     'epwalsh/obsidian.nvim',
     dependencies = {
       'nvim-lua/plenary.nvim',
     },
+    ft = { 'markdown', 'norg', 'rmd', 'org' },
     opts = {
       workspaces = {
         {
@@ -35,6 +37,7 @@ return {
   },
   {
     'alexghergh/nvim-tmux-navigation',
+    event = 'VeryLazy',
     config = function()
       local nvim_tmux_nav = require 'nvim-tmux-navigation'
       nvim_tmux_nav.setup {
