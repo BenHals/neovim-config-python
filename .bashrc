@@ -132,3 +132,7 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 PATH=~/nvim-linux64/bin:$PATH
+# CoderEnv
+# DO NOT EDIT: Added by Coder CLI installer (https://coder.canva-internal.com/install.sh)
+[ -e "/Users/benhals/.coder.sh" ] && . "/Users/benhals/.coder.sh"
+# EndCoderEnv
