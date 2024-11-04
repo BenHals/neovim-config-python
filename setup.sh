@@ -12,22 +12,11 @@ sudo apt-get install fd-find
 sudo apt-get install ripgrep
 
 username_home=$HOME
-if [ ! -d "$username_home/.asdf" ]; then
-  git clone https://github.com/asdf-vm/asdf.git $username_home/.asdf --branch v0.13.1
-fi
-if [ ! -d "$username_home/.tmux/plugins/tmp" ]; then
-  git clone https://github.com/tmux-plugins/tpm $username_home/.tmux/plugins/tpm
-fi
 
-sudo chmod u+x $username_home/.asdf/asdf.sh
-
-sudo cp $username_home/.config/nvim/.bashrc $username_home/.bashrc
-sudo cp $username_home/.config/nvim/.tmux.conf $username_home/.tmux.conf
+if [ ! -d "$username_home/.config/tmux/plugins/catppuccin" ]; then
+  mkdir -p ~/.config/tmux/plugins/catppuccin
+  git clone -b v2.1.0 https://github.com/catppuccin/tmux.git ~/.config/tmux/plugins/catppuccin/tmux
+fi
 
 source $username_home/.bashrc
 tmux source $username_home/.tmux.conf
-
-asdf plugin-add python
-
-asdf install python 3.11.6
-asdf global python 3.11.6
