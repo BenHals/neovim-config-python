@@ -35,4 +35,5 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 vim.keymap.set('n', '-', ':Ex<CR>', { desc = 'Open Explorer' })
 vim.api.nvim_set_keymap('n', '<c-l>', '<Plug>NetrwRefresh', { noremap = true, silent = true, nowait = true })
-vim.api.nvim_set_keymap('n', '<C-l>', '<Plug>NetrwRefresh', { noremap = true, silent = true, nowait = true })
+-- vim.api.nvim_set_keymap('n', '<C-l>', '<Plug>NetrwRefresh', { noremap = true, silent = true, nowait = true })
+vim.keymap.set('n', '<leader>l', '<cmd>NvimTmuxNavigateRight<CR>')
