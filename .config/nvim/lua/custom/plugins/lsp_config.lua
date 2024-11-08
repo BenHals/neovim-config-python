@@ -102,6 +102,8 @@ return {
           --  Most Language Servers support renaming across files, etc.
           map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
 
+          map('K', vim.lsp.buf.hover, 'Hover Documentation')
+
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
           map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
@@ -168,8 +170,21 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        basedpyright = {},
-        ruff_lsp = {},
+        basedpyright = {
+          settings = {
+            pyright = {
+              -- We want ruff to do import organization
+              disableOrganizeImports = true,
+            },
+            python = {
+              -- We want ruff to do linting
+              analysis = {
+                ignore = { '*' },
+              },
+            },
+          },
+        },
+        ruff = { capabilities = { hoverProvider = false } },
         julials = {},
         terraformls = { filetypes = { 'tf', 'tfvars' } },
         rust_analyzer = {},
@@ -200,16 +215,11 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
-        'ruff-lsp', -- linter for python (includes flake8, pep8, etc.)
         'debugpy', -- debugger
-        'ruff', -- formatter
         'prettier',
         'mypy',
         'isort', -- organize imports
         'taplo', -- LSP for toml (for pyproject.toml files)
-        'rust-analyzer',
-        'julials',
-        'terraform-ls',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -225,10 +235,6 @@ return {
           end,
         },
       }
-      -- require('lspconfig')['terraformls'].setup {
-      --   capabilities = capabilities,
-      --   filetypes = { 'tf', 'tfvars' },
-      -- }
 
       local null_ls = require 'null-ls'
 
