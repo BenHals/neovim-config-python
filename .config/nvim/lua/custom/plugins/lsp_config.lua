@@ -186,7 +186,7 @@ return {
         },
         ruff = { capabilities = { hoverProvider = false } },
         julials = {},
-        terraformls = { filetypes = { 'tf', 'tfvars' } },
+        terraformls = { filetypes = { 'tf', 'tfvars', 'terraform' } },
         rust_analyzer = {},
         ts_ls = {},
         html = { filetypes = { 'html', 'twig', 'hbs' } },
