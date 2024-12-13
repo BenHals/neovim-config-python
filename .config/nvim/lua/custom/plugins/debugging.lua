@@ -125,10 +125,13 @@ return {
       'nvim-neotest/neotest-python',
     },
     config = function()
+      local virtual = os.getenv 'VIRTUAL_ENV' or os.getenv 'CONDA_PREFIX' or '/usr'
+      print(virtual)
       require('neotest').setup {
         adapters = {
           require 'neotest-python' {
             dap = { stopOnEntry = false, justMyCode = false },
+            python = virtual .. '/bin/python/',
           },
         },
       }
