@@ -1,3 +1,22 @@
+local function filename_first(_, path)
+  local tail = vim.fs.basename(path)
+  local parent = vim.fs.dirname(path)
+  if parent == '.' then
+    return tail
+  end
+  return string.format('%s\t\t%s', tail, parent)
+end
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'TelescopeResults',
+  callback = function(ctx)
+    vim.api.nvim_buf_call(ctx.buf, function()
+      vim.fn.matchadd('TelescopeParent', '\t\t.*$')
+      vim.api.nvim_set_hl(0, 'TelescopeParent', { link = 'Comment' })
+    end)
+  end,
+})
+
 return {
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
@@ -53,10 +72,12 @@ return {
         defaults = {
           mappings = {
             i = {
-              ['<c-enter>'] = 'to_fuzzy_refine',
+              ['<c-e>'] = 'to_fuzzy_refine',
               ['<c-t>'] = trouble.open,
             },
           },
+
+          path_display = filename_first,
         },
         -- pickers = {}
         extensions = {
