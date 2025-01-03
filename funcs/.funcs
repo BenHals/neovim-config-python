@@ -1,0 +1,33 @@
+alias gswitch='git switch $(git branch | fzf --height=20% --reverse --info=inline)'
+alias finduc='grep -o "# .*" ~/work/useful_commands.txt'
+
+getuc () {
+  while getopts 'o' c
+  do
+    case $c in
+      o) ONLY_COMMANDS=true ;;
+    esac
+  done
+
+  COMMAND_TITLE=$(finduc | fzf --no-clear --height 40% --layout reverse --info inline --border)
+  COMMANDS=$(sed -n "/${COMMAND_TITLE}/,/##/p" ~/work/useful_commands.txt)
+
+  if [[ -n "$ONLY_COMMANDS" ]] then
+    COMMANDS=$(echo $COMMANDS | grep -v "#.*" | grep -v "//.*" | grep -v -e '^$') 
+  fi
+  
+  echo $COMMANDS
+  unset ONLY_COMMANDS
+}
+
+descuc () {
+  COMMENT=$(grep -i -B 1 $1 ~/work/useful_commands.txt | grep -v $1)
+  echo $COMMENT
+}
+
+searchuc () {
+  COMMAND=$(getuc -o | fzf --tmux --height 40% --layout reverse --info inline --border --sync --preview 'grep -i -B 1 {} ~/work/useful_commands.txt | grep -v {}' --preview-window up,1,border-horizontal)
+  print -z -- $COMMAND
+}
+
+alias suc='searchuc'

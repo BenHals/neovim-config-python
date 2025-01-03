@@ -1,33 +1,39 @@
 #!/bin/bash
 
-sudo add-apt-repository ppa:neovim-ppa/unstable
+unameOut="$(uname -s)"
+echo "Machine: ${unameOut}"
 
-sudo apt-get update
-sudo apt-get install build-essential
-sudo apt install libssl-dev libffi-dev libncurses5-dev zlib1g zlib1g-dev libreadline-dev libbz2-dev libsqlite3-dev make gcc liblzma-dev lzma
-sudo apt-get install nodejs npm
-sudo apt-get install neovim
-sudo apt-get install python-tk python3-tk tk-dev
-sudo apt-get install fd-find
-sudo apt-get install ripgrep
+if [ "${unameOut}" == "Darwin" ]; then
+  echo "Setup on MacOS not implemented. Install neovim, tmux, starship, ghostty, python, fd, ripgrep and stow!"
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+  sudo add-apt-repository ppa:neovim-ppa/unstable
+  sudo apt-get update
+  sudo apt-get install build-essential
+  sudo apt install libssl-dev libffi-dev libncurses5-dev zlib1g zlib1g-dev libreadline-dev libbz2-dev libsqlite3-dev make gcc liblzma-dev lzma
+  sudo apt-get install nodejs npm
+  sudo apt-get install neovim
+  sudo apt-get install python-tk python3-tk tk-dev
+  sudo apt-get install fd-find
+  sudo apt-get install ripgrep
+  sudo apt-get install stow
+else
+  echo "Setup on Windows not implemented. Install neovim, tmux, starship, ghostty, python, fd, ripgrep and stow!"
+fi
 
 username_home=$HOME
-if [ ! -d "$username_home/.asdf" ]; then
-  git clone https://github.com/asdf-vm/asdf.git $username_home/.asdf --branch v0.13.1
-fi
-if [ ! -d "$username_home/.tmux/plugins/tmp" ]; then
-  git clone https://github.com/tmux-plugins/tpm $username_home/.tmux/plugins/tpm
+
+if [ ! -d "$username_home/.config/tmux/plugins/catppuccin" ]; then
+  mkdir -p ~/.config/tmux/plugins/catppuccin
+  git clone -b v2.1.0 https://github.com/catppuccin/tmux.git ~/.config/tmux/plugins/catppuccin/tmux
 fi
 
-sudo chmod u+x $username_home/.asdf/asdf.sh
+stow nvim
+stow tmux
+stow starship
+stow iterm2
+stow ghostty
+stow funcs
 
-sudo cp $username_home/.config/nvim/.bashrc $username_home/.bashrc
-sudo cp $username_home/.config/nvim/.tmux.conf $username_home/.tmux.conf
 
 source $username_home/.bashrc
-tmux source $username_home/.tmux.conf
-
-asdf plugin-add python
-
-asdf install python 3.11.6
-asdf global python 3.11.6
+tmux source $username_home/.config/tmux/tmux.conf
