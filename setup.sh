@@ -30,9 +30,9 @@ fi
 stow nvim
 stow tmux
 stow starship
-stow iterm2
 stow ghostty
 stow funcs
+stow bash
 
 
 source $username_home/.bashrc
