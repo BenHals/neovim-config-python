@@ -299,7 +299,7 @@ return {
   },
   {
     'saghen/blink.cmp',
-
+    dependencies = { 'saghen/blink.compat' },
     -- use a release tag to download pre-built binaries
     version = 'v0.*',
 
@@ -326,7 +326,21 @@ return {
       -- default list of enabled providers defined so that you can extend it
       -- elsewhere in your config, without redefining it, via `opts_extend`
       sources = {
-        default = { 'lsp', 'path', 'buffer' },
+        default = { 'lsp', 'obsidian', 'obsidian_new', 'obsidian_tags', 'path', 'buffer' },
+        providers = {
+          obsidian = {
+            name = 'obsidian',
+            module = 'blink.compat.source',
+          },
+          obsidian_new = {
+            name = 'obsidian_new',
+            module = 'blink.compat.source',
+          },
+          obsidian_tags = {
+            name = 'obsidian_tags',
+            module = 'blink.compat.source',
+          },
+        },
         -- optionally disable cmdline completions
         -- cmdline = {},
       },
