@@ -1,4 +1,4 @@
-palette = "catppuccin_macchiato"
+palette = "greyscale_light"
 
 format = """
 $directory\
@@ -6,9 +6,9 @@ $directory\
 $git_branch\
 [](fg:maroon bg:mauve)\
 $python\
-[](fg:mauve bg:#1d2230)\
+[](fg:mauve bg:surface0)\
 $time\
-[ ](fg:#1d2230)\
+[ ](fg:surface0)\
 \n$character"""
 
 [directory]
@@ -59,9 +59,9 @@ format = '[[ $symbol ($version)(\($virtualenv\)) ](fg:mantle bg:mauve)]($style)'
 
 [time]
 disabled = false
-time_format = "%R"                                      # Hour:Minute Format
-style = "bg:#1d2230"
-format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
+time_format = "%R"                                     # Hour:Minute Format
+style = "bg:surface0"
+format = '[[  $time ](fg:mauve bg:surface0)]($style)'
 
 # Palette definitions
 [palettes.catppuccin_latte]
@@ -175,3 +175,31 @@ surface0 = "#313244"
 base = "#1e1e2e"
 mantle = "#181825"
 crust = "#11111b"
+
+[palettes.grayscale_light]
+rosewater = "#CCCCCC"
+flamingo = "#CCCCCC"
+pink = "#CCCCCC"
+mauve = "#CCCCCC"
+red = "#CCCCCC"
+maroon = "#CCCCCC"
+peach = "#CCCCCC"
+yellow = "#CCCCCC"
+green = "#CCCCCC"
+teal = "#CCCCCC"
+sky = "#CCCCCC"
+sapphire = "#CCCCCC"
+blue = "#CCCCCC"
+lavender = "#CCCCCC"
+text = "#333333"
+subtext1 = "#CCCCCC"
+subtext0 = "#CCCCCC"
+overlay2 = "#CCCCCC"
+overlay1 = "#CCCCCC"
+overlay0 = "#CCCCCC"
+surface2 = "#CCCCCC"
+surface1 = "#CCCCCC"
+surface0 = "#CCCCCC"
+base = "#474747"
+mantle = "#CCCCCC"
+crust = "#CCCCCC"

@@ -10,7 +10,30 @@ return {
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
+      -- vim.cmd.colorscheme 'tokyonight-night'
+      --
+      -- vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#51B3EC', bold = true })
+      -- vim.api.nvim_set_hl(0, 'LineNr', { fg = 'white', bold = true })
+      -- vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#FB508F', bold = true })
+    end,
+  },
+  {
+    'zenbones-theme/zenbones.nvim',
+    -- Optionally install Lush. Allows for more configuration or extending the colorscheme
+    -- If you don't want to install lush, make sure to set g:zenbones_compat = 1
+    -- In Vim, compat mode is turned on as Lush only works in Neovim.
+    dependencies = 'rktjmp/lush.nvim',
+    lazy = false,
+    priority = 1000,
+    -- you can set set configuration options here
+    -- config = function()
+    --     vim.g.zenbones_darken_comments = 45
+    --     vim.cmd.colorscheme('zenbones')
+    -- end
+    init = function()
+      vim.cmd.colorscheme 'zenbones'
+
+      vim.opt.background = 'light'
 
       vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#51B3EC', bold = true })
       vim.api.nvim_set_hl(0, 'LineNr', { fg = 'white', bold = true })
