@@ -25,6 +25,7 @@ username_home=$HOME
 if [ ! -d "$username_home/.config/tmux/plugins/catppuccin" ]; then
   mkdir -p ~/.config/tmux/plugins/catppuccin
   git clone -b v2.1.0 https://github.com/catppuccin/tmux.git ~/.config/tmux/plugins/catppuccin/tmux
+  cp tmux/.config/tmux/catppuccin_eink_tmux.conf ~/.config/tmux/plugins/catppuccin/tmux/themes/
 fi
 
 stow nvim
