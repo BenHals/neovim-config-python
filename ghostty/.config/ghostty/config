@@ -1,3 +1,4 @@
-theme = catppuccin-mocha
+theme = neobones_light
+background = #CCCCCC
 font-size=16
 

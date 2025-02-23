@@ -1,4 +1,4 @@
-palette = "greyscale_light"
+palette = "grayscale_light"
 
 format = """
 $directory\
@@ -8,7 +8,7 @@ $git_branch\
 $python\
 [](fg:mauve bg:surface0)\
 $time\
-[ ](fg:surface0)\
+[ ](fg:mauve bg:surface0)\
 \n$character"""
 
 [directory]
@@ -55,13 +55,13 @@ format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 [python]
 symbol = "\uec16"
 style = "bg:#212736"
-format = '[[ $symbol ($version)(\($virtualenv\)) ](fg:mantle bg:mauve)]($style)'
+format = '[[ $symbol ($version)(\($virtualenv\)) ](fg:base bg:mauve)]($style)'
 
 [time]
 disabled = false
-time_format = "%R"                                     # Hour:Minute Format
+time_format = "%R"                                    # Hour:Minute Format
 style = "bg:surface0"
-format = '[[  $time ](fg:mauve bg:surface0)]($style)'
+format = '[[  $time ](fg:base bg:surface0)]($style)'
 
 # Palette definitions
 [palettes.catppuccin_latte]
