@@ -31,9 +31,8 @@ return {
     --     vim.cmd.colorscheme('zenbones')
     -- end
     init = function()
-      vim.cmd.colorscheme 'zenbones'
-
       vim.opt.background = 'light'
+      vim.cmd [[colorscheme eink]]
 
       vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#51B3EC', bold = true })
       vim.api.nvim_set_hl(0, 'LineNr', { fg = 'white', bold = true })

@@ -349,7 +349,10 @@ return {
       signature = { enabled = true },
       completion = {
         list = {
-          selection = 'manual',
+          selection = {
+            preselect = false,
+            auto_insert = true,
+          },
         },
         ghost_text = {
           enabled = true,
