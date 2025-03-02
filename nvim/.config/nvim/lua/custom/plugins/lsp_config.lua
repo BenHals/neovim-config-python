@@ -363,4 +363,11 @@ return {
     -- without having to redefine it
     opts_extend = { 'sources.default' },
   },
+  {
+    'github/copilot.vim',
+    config = function()
+      vim.keymap.set('i', '<M-l>', '<Plug>(copilot-accept-line)')
+      vim.keymap.set('i', '<M-;>', '<Plug>(copilot-accept-word)')
+    end,
+  },
 }

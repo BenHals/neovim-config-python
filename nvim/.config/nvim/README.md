@@ -231,3 +231,4 @@ sudo pacman -S --noconfirm --needed gcc make git ripgrep fd unzip neovim
 ```
 </details>
 
+add a colon to the end of the line and 

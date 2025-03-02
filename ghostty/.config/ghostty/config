@@ -1,4 +1,5 @@
 theme = neobones_light
 background = #CCCCCC
 font-size=16
-
+macos-option-as-alt = left
+keybind = alt+l=unbind
