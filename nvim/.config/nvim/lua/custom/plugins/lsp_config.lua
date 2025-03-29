@@ -199,7 +199,6 @@ return {
             },
           },
         },
-        volar = { filetypes = { 'ts' } },
         -- TypeScript
         ts_ls = {
           filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
@@ -207,7 +206,7 @@ return {
             plugins = {
               {
                 name = '@vue/typescript-plugin',
-                location = vim.fn.stdpath 'data' .. '/mason/packages/vue-language-server/node_modules/@vue/language-server',
+                location = string.gsub(vim.fn.system 'npm root -g', '\n', '') .. '/@vue/typescript-plugin',
                 languages = { 'vue' },
               },
             },
