@@ -199,6 +199,7 @@ return {
             },
           },
         },
+        volar = {},
         -- TypeScript
         ts_ls = {
           filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
