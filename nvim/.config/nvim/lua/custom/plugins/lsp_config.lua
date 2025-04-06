@@ -199,7 +199,7 @@ return {
             },
           },
         },
-        volar = {},
+        volar = { filetypes = { 'ts' } },
         -- TypeScript
         ts_ls = {
           filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
@@ -382,6 +382,7 @@ return {
     config = function()
       vim.keymap.set('i', '<M-l>', '<Plug>(copilot-accept-line)')
       vim.keymap.set('i', '<M-;>', '<Plug>(copilot-accept-word)')
+      vim.g.copilot_no_tab_map = true
     end,
   },
 }
