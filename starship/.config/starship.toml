@@ -4,8 +4,6 @@ format = """
 $directory\
 [](fg:peach bg:maroon)\
 $git_branch\
-[](fg:maroon bg:mauve)\
-$python\
 [](fg:mauve bg:surface0)\
 $time\
 [ ](fg:mauve bg:surface0)\
@@ -51,11 +49,6 @@ format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 symbol = ""
 style = "bg:#212736"
 format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
-
-[python]
-symbol = "\uec16"
-style = "bg:#212736"
-format = '[[ $symbol ($version)(\($virtualenv\)) ](fg:base bg:mauve)]($style)'
 
 [time]
 disabled = false
