@@ -25,7 +25,7 @@ return {
 
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim',       opts = {} },
+      { 'j-hui/fidget.nvim', opts = {} },
       'saghen/blink.cmp',
     },
     config = function()
@@ -210,8 +210,7 @@ return {
             plugins = {
               {
                 name = '@vue/typescript-plugin',
-                location = vim.fn.stdpath 'data' ..
-                    '/mason/packages/vue-language-server/node_modules/@vue/language-server',
+                location = vim.fn.stdpath 'data' .. '/mason/packages/vue-language-server/node_modules/@vue/language-server',
                 languages = { 'vue' },
               },
             },
@@ -231,10 +230,10 @@ return {
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
-        'stylua',  -- Used to format Lua code
+        'stylua', -- Used to format Lua code
         'debugpy', -- debugger
         'prettier',
-        'taplo',   -- LSP for toml (for pyproject.toml files)
+        'taplo', -- LSP for toml (for pyproject.toml files)
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -287,7 +286,7 @@ return {
       formatters_by_ft = {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
-        python = { 'ruff_format', "ruff_organize_imports" },
+        python = { 'ruff_format', 'ruff_organize_imports' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         javascript = { 'prettierd', 'prettier', stop_after_first = true },
@@ -367,6 +366,6 @@ return {
       vim.keymap.set('i', '<M-;>', '<Plug>(copilot-accept-word)')
       vim.g.copilot_no_tab_map = true
     end,
-    enabled = false,
+    enabled = true,
   },
 }

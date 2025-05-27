@@ -1,4 +1,4 @@
-palette = "grayscale_light"
+palette = "catppuccin_mocha"
 
 format = """
 $directory\
