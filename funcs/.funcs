@@ -13,7 +13,7 @@ getuc () {
   COMMANDS=$(sed -n "/${COMMAND_TITLE}/,/##/p" ~/work/useful_commands.txt)
 
   if [[ -n "$ONLY_COMMANDS" ]] then
-    COMMANDS=$(echo $COMMANDS | grep -v "#.*" | grep -v "//.*" | grep -v -e '^$') 
+    COMMANDS=$(echo $COMMANDS | grep -v "#.*" | grep -v "// .*" | grep -v -e '^$') 
   fi
   
   echo $COMMANDS
