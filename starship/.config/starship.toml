@@ -4,7 +4,7 @@ format = """
 $directory\
 [](fg:peach bg:maroon)\
 $git_branch\
-[](fg:mauve bg:surface0)\
+[](fg:maroon bg:mauve)\
 $time\
 [ ](fg:mauve bg:surface0)\
 \n$character"""
@@ -52,9 +52,9 @@ format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
 [time]
 disabled = false
-time_format = "%R"                                    # Hour:Minute Format
+time_format = "%R"                                 # Hour:Minute Format
 style = "bg:surface0"
-format = '[[  $time ](fg:base bg:surface0)]($style)'
+format = '[[  $time ](fg:base bg:mauve)]($style)'
 
 # Palette definitions
 [palettes.catppuccin_latte]
