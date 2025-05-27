@@ -29,6 +29,7 @@ if [ ! -d "$username_home/.config/tmux/plugins/catppuccin" ]; then
 fi
 
 stow nvim
+stow nvim-11
 stow tmux
 stow starship
 stow ghostty
