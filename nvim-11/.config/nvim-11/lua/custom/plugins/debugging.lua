@@ -21,7 +21,7 @@ local ui = {
     layouts = {
       {
         elements = {
-          { id = 'repl', size = 0.30 },
+          { id = 'repl',    size = 0.30 },
           { id = 'console', size = 0.70 },
         },
         size = 0.19,
@@ -29,10 +29,10 @@ local ui = {
       },
       {
         elements = {
-          { id = 'scopes', size = 0.30 },
+          { id = 'scopes',      size = 0.30 },
           { id = 'breakpoints', size = 0.20 },
-          { id = 'stacks', size = 0.10 },
-          { id = 'watches', size = 0.30 },
+          { id = 'stacks',      size = 0.10 },
+          { id = 'watches',     size = 0.30 },
         },
         size = 0.20,
         position = 'right',
@@ -54,30 +54,30 @@ local ui = {
 }
 
 local python = -- Configuration for the python debugger
-  -- - configures debugpy for us
-  -- - uses the debugpy installation from mason
-  {
-    'mfussenegger/nvim-dap-python',
-    dependencies = 'mfussenegger/nvim-dap',
-    config = function()
-      -- uses the debugypy installation by mason
-      local debugpyPythonPath = 'python'
+-- - configures debugpy for us
+-- - uses the debugpy installation from mason
+{
+  'mfussenegger/nvim-dap-python',
+  dependencies = 'mfussenegger/nvim-dap',
+  config = function()
+    -- uses the debugypy installation by mason
+    local debugpyPythonPath = 'python'
 
-      require('dap-python').setup(debugpyPythonPath, {})
-      table.insert(require('dap').configurations.python, {
-        type = 'python',
-        request = 'attach',
-        name = 'Attach remote JMC',
-        connect = function()
-          local host = vim.fn.input 'Host [127.0.0.1]: '
-          host = host ~= '' and host or '127.0.0.1'
-          local port = tonumber(vim.fn.input 'Port [5678]: ') or 5678
-          local justMyCode = true
-          return { host = host, port = port, justMyCode = justMyCode }
-        end,
-      })
-    end,
-  }
+    require('dap-python').setup(debugpyPythonPath, {})
+    table.insert(require('dap').configurations.python, {
+      type = 'python',
+      request = 'attach',
+      name = 'Attach remote JMC',
+      connect = function()
+        local host = vim.fn.input 'Host [127.0.0.1]: '
+        host = host ~= '' and host or '127.0.0.1'
+        local port = tonumber(vim.fn.input 'Port [5678]: ') or 5678
+        local justMyCode = true
+        return { host = host, port = port, justMyCode = justMyCode }
+      end,
+    })
+  end,
+}
 
 return {
   {
@@ -90,10 +90,10 @@ return {
       local dap = require 'dap'
       return {
         -- Basic debugging keymaps, feel free to change to your liking!
-        { '<leader>dc', dap.continue, desc = 'Debug: Start/Continue' },
-        { '<leader>di', dap.step_into, desc = 'Debug: Step Into' },
-        { '<leader>dn', dap.step_over, desc = 'Debug: Step Over' },
-        { '<leader>do', dap.step_out, desc = 'Debug: Step Out' },
+        { '<leader>dc', dap.continue,          desc = 'Debug: Start/Continue' },
+        { '<leader>di', dap.step_into,         desc = 'Debug: Step Into' },
+        { '<leader>dn', dap.step_over,         desc = 'Debug: Step Over' },
+        { '<leader>do', dap.step_out,          desc = 'Debug: Step Out' },
         { '<leader>db', dap.toggle_breakpoint, desc = 'Debug: Toggle Breakpoint' },
         {
           '<leader>dB',

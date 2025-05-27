@@ -25,7 +25,7 @@ return {
 
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim',       opts = {} },
       'saghen/blink.cmp',
     },
     config = function()
@@ -116,6 +116,12 @@ return {
           --
           -- When you move your cursor, the highlights will be cleared (the second autocommand).
           local client = vim.lsp.get_client_by_id(event.data.client_id)
+
+          -- We want pyright to provide hover support instead of ruff - see ruff docs
+          if client and client.name == 'ruff' then
+            client.server_capabilities.hoverProvider = false
+          end
+
           if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
             local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
@@ -185,9 +191,7 @@ return {
           },
         },
         ruff = { capabilities = { hoverProvider = false } },
-        julials = {},
         terraformls = { filetypes = { 'tf', 'tfvars', 'terraform' } },
-        rust_analyzer = {},
         html = { filetypes = { 'html', 'twig', 'hbs' } },
         lua_ls = {
           settings = {
@@ -199,7 +203,6 @@ return {
             },
           },
         },
-        volar = { filetypes = { 'ts' } },
         -- TypeScript
         ts_ls = {
           filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
@@ -207,7 +210,8 @@ return {
             plugins = {
               {
                 name = '@vue/typescript-plugin',
-                location = vim.fn.stdpath 'data' .. '/mason/packages/vue-language-server/node_modules/@vue/language-server',
+                location = vim.fn.stdpath 'data' ..
+                    '/mason/packages/vue-language-server/node_modules/@vue/language-server',
                 languages = { 'vue' },
               },
             },
@@ -227,12 +231,10 @@ return {
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
-        'stylua', -- Used to format Lua code
+        'stylua',  -- Used to format Lua code
         'debugpy', -- debugger
         'prettier',
-        'mypy',
-        'isort', -- organize imports
-        'taplo', -- LSP for toml (for pyproject.toml files)
+        'taplo',   -- LSP for toml (for pyproject.toml files)
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -248,26 +250,7 @@ return {
           end,
         },
       }
-
-      local null_ls = require 'null-ls'
-
-      null_ls.setup {
-        sources = {
-          null_ls.builtins.diagnostics.mypy.with {
-            extra_args = function()
-              local virtual = os.getenv 'VIRTUAL_ENV' or os.getenv 'CONDA_PREFIX' or '/usr'
-              return { '--python-executable', virtual .. '/bin/python' }
-            end,
-          },
-        },
-        capabilities = capabilities,
-      }
-      -- require('lspconfig').volar.setup()
     end,
-  },
-  {
-    'jose-elias-alvarez/null-ls.nvim',
-    event = { 'BufReadPre', 'BufNewFile' },
   },
   { -- Autoformat
     'stevearc/conform.nvim',
@@ -304,7 +287,7 @@ return {
       formatters_by_ft = {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
-        python = { 'isort', 'ruff' },
+        python = { 'ruff_format', "ruff_organize_imports" },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         javascript = { 'prettierd', 'prettier', stop_after_first = true },
@@ -315,7 +298,7 @@ return {
     'saghen/blink.cmp',
     dependencies = { 'saghen/blink.compat' },
     -- use a release tag to download pre-built binaries
-    version = 'v0.*',
+    version = '1.*',
 
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config

@@ -10,11 +10,12 @@ return {
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      -- vim.cmd.colorscheme 'tokyonight-night'
-      --
-      -- vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#51B3EC', bold = true })
-      -- vim.api.nvim_set_hl(0, 'LineNr', { fg = 'white', bold = true })
-      -- vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#FB508F', bold = true })
+      vim.cmd.colorscheme('tokyonight-night')
+      vim.opt.background = 'dark'
+
+      vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#51B3EC', bold = true })
+      vim.api.nvim_set_hl(0, 'LineNr', { fg = 'white', bold = true })
+      vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#FB508F', bold = true })
     end,
   },
   {
@@ -25,6 +26,7 @@ return {
     dependencies = 'rktjmp/lush.nvim',
     lazy = false,
     priority = 1000,
+    enabled = false,
     -- you can set set configuration options here
     -- config = function()
     --     vim.g.zenbones_darken_comments = 45
