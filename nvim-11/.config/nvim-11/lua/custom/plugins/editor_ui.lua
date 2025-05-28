@@ -1,5 +1,5 @@
 return {
-  'lewis6991/satellite.nvim',
+  'dstein64/nvim-scrollview',
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
   {
     'folke/trouble.nvim',
@@ -27,7 +27,7 @@ return {
   -- Then, because we use the `config` key, the configuration only runs
   -- after the plugin has been loaded:
   --  config = function() ... end
-  {                     -- Useful plugin to show you pending keybinds.
+  { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     opts = {
@@ -70,7 +70,7 @@ return {
 
       -- Document existing key chains
       spec = {
-        { '<leader>c', group = '[C]ode',     mode = { 'n', 'x' } },
+        { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
         { '<leader>d', group = '[D]ebug' },
         { '<leader>f', group = '[F]ile' },
         { '<leader>r', group = '[R]ename' },
@@ -108,7 +108,7 @@ return {
   {
     'ggandor/leap.nvim',
     keys = {
-      { 's', '<Plug>(leap-forward)',  { 'n', 'x', 'o' }, desc = 'Leap (forward)' },
+      { 's', '<Plug>(leap-forward)', { 'n', 'x', 'o' }, desc = 'Leap (forward)' },
       { 'S', '<Plug>(leap-backward)', { 'n', 'x', 'o' }, desc = 'Leap (backward)' },
     },
     opts = {},
