@@ -1,0 +1,30 @@
+set clipboard+=unnamed
+set relativenumber
+set showcmd
+set visualbell
+set showmode
+set incsearch
+set ignorecase
+set smartcase
+set scrolloff=999
+
+let mapleader = " "
+
+set highlightedyank
+set which-key
+set NERDTree
+
+:inoremap jk <Esc>
+:nnoremap <C-h> <C-w>h
+:nnoremap <C-l> <C-w>l
+:nnoremap <C-j> <C-w>j
+:nnoremap <C-k> <C-w>k
+:map K <Action>(ShowHoverInfo)
+:map <leader>sf <Action>(GotoFile)
+:map <leader><leader> <Action>(RecentFiles)
+:map <leader>sg <Action>(GotoSymbol)
+:map <c-w>s <Action>(SplitHorizontally)
+:map <c-w>v <Action>(SplitVertically)
+:map <leader>q <Action>(ActivateProblemsViewToolWindow)
+:map <leader>e <Action>(ShowErrorDescription)
+:map gc <Action>(CommentByLineComment)

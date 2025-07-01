@@ -35,6 +35,7 @@ stow starship
 stow ghostty
 stow funcs
 stow bash
+stow intellij
 
 
 source $username_home/.bashrc
